@@ -597,6 +597,36 @@ sub tab_user_command {
   elsif ($cmd eq 'tabbedex:prev_tab') {
     $self->change_tab($tab, -1);
   }
+  elsif ($cmd eq 'tabbedex:goto_tab0') {
+    $self->moveto_tab($tab, 0);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab1') {
+    $self->moveto_tab($tab, 1);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab2') {
+    $self->moveto_tab($tab, 2);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab3') {
+    $self->moveto_tab($tab, 3);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab4') {
+    $self->moveto_tab($tab, 4);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab5') {
+    $self->moveto_tab($tab, 5);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab6') {
+    $self->moveto_tab($tab, 6);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab7') {
+    $self->moveto_tab($tab, 7);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab8') {
+    $self->moveto_tab($tab, 8);
+  }
+  elsif ($cmd eq 'tabbedex:goto_tab9') {
+    $self->moveto_tab($tab, 9);
+  }
   elsif ($cmd eq 'tabbedex:move_tab_left') {
     $self->move_tab($tab, -1);
   }
@@ -625,6 +655,14 @@ sub change_tab {
   my $idx = 0;
   ++$idx while $self->{tabs}[$idx] != $tab;
   $idx += $direction;
+  $self->make_current ($self->{tabs}[$idx % @{ $self->{tabs}}]);
+
+  ();
+}
+
+sub moveto_tab {
+  my ($self, $tab, $idx) = @_;
+
   $self->make_current ($self->{tabs}[$idx % @{ $self->{tabs}}]);
 
   ();
